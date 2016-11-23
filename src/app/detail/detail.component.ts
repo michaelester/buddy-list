@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SBStore, SBStory } from 'ng-storyblok';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-detail',
@@ -9,16 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailComponent implements OnInit {
 
-  private story: SBStory;
+  private story: Observable<SBStory>;
 
-  constructor(private sbstore: SBStore, private route: ActivatedRoute) {
-
-
-  }
+  constructor(private sbstore: SBStore, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.sbstore.findStory(parseInt(params['id'],10)).then(story => this.story = story);
+      this.story = this.sbstore.story(parseInt(params['id'], 10));
     });
   }
 

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { SBStore, SBStory } from 'ng-storyblok';
-import { Observable } from 'rxjs/observable';
-import { Observer } from 'rxjs/observer';
+import { Observable, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-overview',
