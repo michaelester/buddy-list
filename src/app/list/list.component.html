@@ -1,0 +1,7 @@
+<div *ngIf="buddies">
+  <md-card *ngFor="let buddy of buddies | async">
+   <h1>{{ buddy.content.model.lastname }}</h1>
+   <h2>{{ buddy.content.model.firstname }}</h2>
+   <a routerLink="/{{ buddy.id }}">Detail</a>
+</md-card>
+</div>
