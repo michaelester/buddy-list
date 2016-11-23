@@ -1,2 +1,6 @@
 <a routerLink="/">Back to overview</a>
 <!-- wait if story is loaded -->
+<div *ngIf="story && story.content">
+  asdf
+  <h1>{{ story.content.model.firstname }}</h1>
+</div>
