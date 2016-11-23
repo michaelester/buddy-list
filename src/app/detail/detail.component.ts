@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SBStore, SBStory } from 'ng-storyblok';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  styleUrls: ['./detail.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailComponent implements OnInit {
 

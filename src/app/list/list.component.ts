@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SBStory } from 'ng-storyblok';
 import { Observable, Observer } from 'rxjs';
 import 'rxjs/add/operator/combineLatest'
@@ -6,7 +6,8 @@ import 'rxjs/add/operator/combineLatest'
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent implements OnInit {
   private buddies: Observable<SBStory[]>;
