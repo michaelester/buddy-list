@@ -1,24 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SBStore, SBStory } from 'ng-storyblok';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  styleUrls: ['./detail.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailComponent implements OnInit {
 
-  private story: SBStory;
+  private story: Observable<SBStory>;
 
-  constructor(private sbstore: SBStore, private route: ActivatedRoute) {
-
-
-  }
+  constructor(private sbstore: SBStore, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.sbstore.findStory(params['id']).then(story => this.story = story);
+      this.story = this.sbstore.story(parseInt(params['id'], 10));
     });
   }
 
