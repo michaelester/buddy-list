@@ -18,7 +18,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.sbstore.findStory(params['id']).then(story => this.story = story);
+      this.sbstore.findStory(parseInt(params['id'],10)).then(story => this.story = story);
     });
   }
 
